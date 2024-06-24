@@ -21,7 +21,7 @@ jobs:
       - name: Rollout configuration
         run: |
           mkdir  $HOME/.kube
-          echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 -d > $HOME/.kube/config
+          echo "${{ secrets.KUBE_CONFIG_DATA }}" | > $HOME/.kube/config
           kubectl -n apim rollout restart deployment traffic
           kubectl -n apim rollout restart deployment apimgr
       - name: Verify Manager deployment
