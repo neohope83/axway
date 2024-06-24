@@ -22,9 +22,9 @@ jobs:
         run: |
           mkdir  $HOME/.kube
           echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
-          kubectl -n apim rollout restart deployment traffic
-          kubectl -n apim rollout restart deployment apimgr
+          kubectl -n apim rollout restart deployment apim-traffic
+          kubectl -n apim rollout restart deployment apim-apimgr
       - name: Verify Manager deployment
-        run: kubectl -n apim rollout status deployment/apimgr
+        run: kubectl -n apim rollout status deployment/apim-traffic
       - name: Verify Traffic deployment
-        run: kubectl -n apim rollout status deployment/traffic
+        run: kubectl -n apim rollout status deployment/apim-traffic
